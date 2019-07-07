@@ -1,0 +1,83 @@
+{
+	"Comment": "A state machine that submits a Job to AWS Batch and monitors the Job until it completes.",
+	"StartAt": "Transcribe Audio Job",
+	"States": {
+		"Transcribe Audio Job": {
+			"Type": "Task",
+			"Resource": "arn:aws:lambda:sa-east-1:924327408763:function:ativa-transcribe-audio",
+			"ResultPath": "$",
+			"Next": "Wait X Seconds",
+			"Retry": [{
+				"ErrorEquals": ["States.ALL"],
+				"IntervalSeconds": 1,
+				"MaxAttempts": 3,
+				"BackoffRate": 2
+			}]
+		},
+		"Wait X Seconds": {
+			"Type": "Wait",
+			"SecondsPath": "$.wait_time",
+			"Next": "Get Job Status"
+		},
+		"Get Job Status": {
+			"Type": "Task",
+			"Resource": "arn:aws:lambda:sa-east-1:924327408763:function:checa-status-transcribe",
+			"Next": "Job Complete?",
+			"InputPath": "$",
+			"ResultPath": "$",
+			"Retry": [{
+				"ErrorEquals": ["States.ALL"],
+				"IntervalSeconds": 1,
+				"MaxAttempts": 3,
+				"BackoffRate": 2
+			}]
+		},
+		"Job Complete?": {
+			"Type": "Choice",
+			"Choices": [{
+				"Variable": "$.STATUS",
+				"StringEquals": "IN_PROGRESS",
+				"Next": "Wait X Seconds"
+			}, {
+				"Variable": "$.STATUS",
+				"StringEquals": "COMPLETED",
+				"Next": "Salva transcrição"
+			}, {
+				"Variable": "$.STATUS",
+				"StringEquals": "FAILED",
+				"Next": "Job Failed"
+			}],
+			"Default": "Wait X Seconds"
+		},
+		"Job Failed": {
+			"Type": "Fail",
+			"Cause": "AWS Batch Job Failed",
+			"Error": "DescribeJob returned FAILED"
+		},
+		"Salva transcrição": {
+			"Type": "Task",
+			"Resource": "arn:aws:lambda:sa-east-1:924327408763:function:salva-transcricao",
+			"Next": "Salva audio",
+			"InputPath": "$",
+			"ResultPath": "$",
+			"Retry": [{
+				"ErrorEquals": ["States.ALL"],
+				"IntervalSeconds": 1,
+				"MaxAttempts": 3,
+				"BackoffRate": 2
+			}]
+		},
+       "Salva audio":{
+         "Type": "Task",
+			"Resource": "arn:aws:lambda:sa-east-1:924327408763:function:cria-audio",
+			"InputPath": "$",
+			"End": true,
+			"Retry": [{
+				"ErrorEquals": ["States.ALL"],
+				"IntervalSeconds": 1,
+				"MaxAttempts": 3,
+				"BackoffRate": 2
+			}]
+       }
+	}
+}
