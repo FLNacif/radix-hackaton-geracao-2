@@ -1,0 +1,9 @@
+.sidebarForm div{
+    margin:15px 0px;
+    display: flex;
+    flex-direction: column;
+}
+.sidebarForm label{
+    margin-right: 220px;
+    font-size: 15px;
+} 

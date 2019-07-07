@@ -1,0 +1,43 @@
+.Box{
+    height: 200px;
+    width: 500px;
+    top: 200px;
+}
+
+
+.messageList ul{
+    height: 20px;
+}
+.messageListCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 700px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid;
+}
+.messageListCard div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 10px;
+}
+.messageListCard button{
+    margin-top: 30px;
+}
+.messageListCard li{
+    padding:0px;
+}
+.messageListItem p{
+    padding: 0px;
+    margin: 1px;
+    font-size: 10px !important;
+}
+
+.icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

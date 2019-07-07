@@ -1,0 +1,8 @@
+.Search{
+    height: 25px;
+    display: flex;
+}
+
+.inputField input{
+    background-color: lightblue;
+}

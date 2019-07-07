@@ -1,0 +1,34 @@
+.Home{
+    margin: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.wordSearch{
+    flex-direction: column;
+    justify-content: baseline;
+}
+.searchButton{
+    margin-top: 35px;
+    width: 150px;
+    background-color: whitesmoke;
+}
+.inputField{
+    width: 600px !important;
+}
+h1{
+    font-size: 35px;
+}
+.searchButton{
+    border-radius:10px;
+    width: 200px;
+    height: 50px;
+    color: white;
+    background-color: rgb(67,192,255) !important;
+    border-style: solid;
+}
+
+.searchButton :active{
+    background-color: white;
+    color: rgb(67,192,255);
+}

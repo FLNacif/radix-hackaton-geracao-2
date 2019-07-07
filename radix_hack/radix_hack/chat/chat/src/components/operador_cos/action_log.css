@@ -1,0 +1,39 @@
+.actionLogCard{
+    padding:5px;
+    width: 500px;
+    margin-left: 260px;
+    padding:0px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border:1px solid;
+}
+.formLogCard{
+    padding:5px;
+
+    width: 500px;
+    margin-left: 260px;
+    padding:0px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border:1px solid;
+}
+.cardsList{
+    justify-content: center;
+}
+li{
+    margin:5px;
+}
+
+.confirmacao{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+} 
+.buttons{
+    margin: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,15 @@
+.actionLogCard{
+    width: 500px;
+    margin-left: 260px;
+    padding:0px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border:1px solid;
+}
+.cardsList{
+    justify-content: center;
+}
+li{
+    margin:5px;
+}
