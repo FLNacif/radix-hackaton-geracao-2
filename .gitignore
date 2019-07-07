@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/EngieTempoRealHackathon/.vs/EngieTempoRealHackathon/v16/Server/sqlite3
+/EngieTempoRealHackathon/.vs/EngieTempoRealHackathon/v16
+/EngieTempoRealHackathon/EngieTempoRealHackathon/bin/Debug/netcoreapp2.2
+/EngieTempoRealHackathon/EngieTempoRealHackathon/obj
